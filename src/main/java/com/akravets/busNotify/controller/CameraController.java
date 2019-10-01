@@ -2,6 +2,7 @@ package com.akravets.busNotify.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.Optional;
 
 import org.apache.http.client.ClientProtocolException;
@@ -22,7 +23,7 @@ public class CameraController {
 	CameraService service;
 
 	@RequestMapping(value = "/analyze", method = RequestMethod.GET)
-	public ModelAndView analyze() throws ClientProtocolException, IOException {
+	public ModelAndView analyze() throws ClientProtocolException, IOException, URISyntaxException {
 			ModelAndView mv = new ModelAndView("showResults");
 			Optional<InputStream> analyze = service.analyze();
 			if(analyze.isPresent()) {
